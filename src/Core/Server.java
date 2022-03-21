@@ -18,7 +18,6 @@ public class Server
     public String version;
     private final HashMap<String, PacketManager> packetManagers;
     private final ArrayList<ClientConnection> clients;
-    private Loop loop;
 
 
     public Server(int port)
@@ -38,7 +37,6 @@ public class Server
         try {
             this.serverSocket = new ServerSocket( port );
             System.out.println( "Listening for a connection" );
-            this.loop.start();
             this.accept();
 
 
@@ -80,10 +78,6 @@ public class Server
     public void slowTick(){
         //System.out.println("Ticks Per Second: "+this.loop.realTPS+"\n");
         //System.out.println("Memory Used: "+this.loop.getUsedMemory()+"\n");
-    }
-
-    public void setLoop(Loop loop){
-        this.loop = loop;
     }
 
     public PacketManager getPackageManager(String key){
